@@ -258,7 +258,53 @@ class D55P9(Scene):
                   ChangingDecimal(exampleVVLV5,getSin()))
         self.wait()
          
-        self.play(FadeOutAndShift(VGroup(plane,title),run_time=2),FadeOut(VGroup(exampleVU,exampleVV,exampleVUL,exampleVVL,exampleTheta1,exampleTheta2,exampleVULV1,exampleVULV2,exampleVULV3,exampleVVLV1,exampleVVLV2,exampleVVLV3,exampleVVLV4,exampleVVLV5,exampleVVLV6),run_time=2))
+        self.play(FadeOutAndShift(plane,run_time=2),FadeOut(VGroup(exampleVU,exampleVV,exampleVUL,exampleVVL,exampleTheta1,exampleTheta2,exampleVULV1,exampleVULV2,exampleVULV3,exampleVVLV1,exampleVVLV2,exampleVVLV3,exampleVVLV4,exampleVVLV5,exampleVVLV6),run_time=2))
+        self.wait()
+        
+        intro = TextMobject("Before we end:")
+        vector = TexMobject("\\vec{u}=[5cos(\\theta),5sin(\\theta)]").next_to(intro,direction=DOWN)
+        vectorQuestion = TexMobject("\\left|\\vec{u}\\right|=?").next_to(vector,direction=DOWN)
+        VGroup(intro,vector,vectorQuestion).move_to(ORIGIN)
+        self.play(Write(intro))
+        self.wait()
+        
+        self.play(Write(VGroup(vector,vectorQuestion)))
+        self.wait()
+        
+        self.play(FadeOut(VGroup(intro,vector)),
+                  ApplyMethod(vectorQuestion.move_to,ORIGIN))
+        self.wait()
+        
+        answer1 = TexMobject("\\left|\\vec{u}\\right|")
+        self.play(ReplacementTransform(vectorQuestion,answer1))
+        self.wait()
+        
+        answer2 = TexMobject("=(5cos\\theta)^{2}+(5sin\\theta)^{2}")
+        
+        self.play(ApplyMethod(answer1.shift,numpy.array((-answer2.get_width()/2,0,0))))
+        self.wait()
+        
+        answer2.next_to(answer1)
+        answer3 = TexMobject("=25cos^{2}(\\theta)+25sin^{2}(\\theta)").next_to(answer2,direction=DOWN).align_to(answer2,direction=LEFT)
+        answer4 = TexMobject("=25[cos^{2}(\\theta)+sin^{2}(\\theta)]").next_to(answer3,direction=DOWN).align_to(answer3,direction=LEFT)
+        answer5 = TexMobject("=25").next_to(answer4,direction=DOWN).align_to(answer4,direction=LEFT)
+        
+        self.play(Write(answer2))
+        self.wait()
+        
+        self.play(Write(answer3))
+        self.wait()
+        
+        self.play(Write(answer4))
+        self.wait()
+        
+        self.play(Write(answer5))
+        self.wait()
+        
+        self.play(ApplyMethod(VGroup(answer1,answer2,answer3,answer4,answer5).move_to,ORIGIN))
+        self.wait()
+        
+        self.play(FadeOutAndShift(VGroup(answer1,answer2,answer3,answer4,answer5,title),run_time=2))
         self.wait()
          
         conclusion = TextMobject("Thanks for watching!")
@@ -271,3 +317,4 @@ class D55P9(Scene):
          
         self.play(FadeOutAndShift(conclusion))
         self.wait()
+        
