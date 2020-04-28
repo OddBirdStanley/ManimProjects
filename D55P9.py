@@ -1,5 +1,4 @@
 from manimlib.imports import *
-import numpy
 
 #Author: Stanley Jian
 #CRAPPY Organization......
@@ -10,8 +9,8 @@ class D55P9(Scene):
         self.wait()
              
         manim = TextMobject("With Manim")
-        manim.shift(numpy.array((0,-1/3,0))).scale(0.75)
-        author.generate_target().shift(numpy.array((0,1/3,0)))
+        manim.shift(np.array((0,-1/3,0))).scale(0.75)
+        author.generate_target().shift(np.array((0,1/3,0)))
         self.play(MoveToTarget(author),Write(manim))
         self.wait()
             
@@ -30,7 +29,7 @@ class D55P9(Scene):
         self.play(ShowCreation(plane))
         self.wait()
              
-        v50 = Vector(numpy.array((5,0,0)))
+        v50 = Vector(np.array((5,0,0)))
         v50L = TexMobject("\\vec{u}")
         v50L.next_to(v50,direction=DOWN)
         self.play(GrowArrow(v50))
@@ -57,11 +56,11 @@ class D55P9(Scene):
         self.wait()
               
         v50rT = v50r.generate_target()
-        v50rT.rotate_about_origin(1/5*numpy.pi)
-        angle = Arc(angle=1/5*numpy.pi)
+        v50rT.rotate_about_origin(1/5*np.pi)
+        angle = Arc(angle=1/5*np.pi)
         angleL = TexMobject("36\\si{\\degree}").scale(0.7)
         angleL.next_to(angle,direction=RIGHT)
-        angleL.shift(numpy.array((0,0.15,0)))
+        angleL.shift(np.array((0,0.15,0)))
         self.play(MoveToTarget(v50r))
         self.wait()
           
@@ -69,7 +68,7 @@ class D55P9(Scene):
         self.wait()
           
         v50rL = TexMobject("\\vec{v}").set_color("#FFD868")
-        v50rL.move_to(numpy.array((2.5*numpy.cos(1/5*numpy.pi)-0.5,2.5*numpy.sin(1/5*numpy.pi)+0.5,0)))
+        v50rL.move_to(np.array((2.5*np.cos(1/5*np.pi)-0.5,2.5*np.sin(1/5*np.pi)+0.5,0)))
         self.play(Write(v50rL))
         self.wait()
           
@@ -84,9 +83,9 @@ class D55P9(Scene):
                   ApplyMethod(v50r.scale_about_point,0.2,ORIGIN,run_time=2.5))
         self.wait()
         
-        unit = DashedLine(start=ORIGIN,end=numpy.array((numpy.cos(2/3*numpy.pi),numpy.sin(2/3*numpy.pi),0)))
-        unitB = Brace(Line(start=ORIGIN,end=numpy.array((1,0,0))),direction=UP,buff=0).rotate_about_origin(2/3*numpy.pi)
-        unitBL = TexMobject("1").move_to(numpy.array((numpy.cos(2/3*numpy.pi)/2-0.45,numpy.sin(2/3*numpy.pi)/2-0.2,0))).scale(0.5)
+        unit = DashedLine(start=ORIGIN,end=np.array((np.cos(2/3*np.pi),np.sin(2/3*np.pi),0)))
+        unitB = Brace(Line(start=ORIGIN,end=np.array((1,0,0))),direction=UP,buff=0).rotate_about_origin(2/3*np.pi)
+        unitBL = TexMobject("1").move_to(np.array((np.cos(2/3*np.pi)/2-0.45,np.sin(2/3*np.pi)/2-0.2,0))).scale(0.5)
         
         self.play(ShowCreation(unit))
         self.wait()
@@ -98,13 +97,13 @@ class D55P9(Scene):
                   ApplyMethod(v50r.scale_about_point,5.0,ORIGIN,run_time=2.5))
         self.wait()
                   
-        altitude = DashedLine(start=numpy.array((5*numpy.cos(1/5*numpy.pi),5*numpy.sin(1/5*numpy.pi),0)),end=numpy.array((5*numpy.cos(1/5*numpy.pi),0,0)))
-        projection = Line(start=ORIGIN,end=numpy.array((5*numpy.cos(1/5*numpy.pi),0,0)))
-        perpendicular = VGroup(Line(start=numpy.array((5*numpy.cos(1/5*numpy.pi)-0.25,0,0)),end=numpy.array((5*numpy.cos(1/5*numpy.pi)-0.25,0.25,0))),Line(start=numpy.array((5*numpy.cos(1/5*numpy.pi)-0.25,0.25,0)),end=numpy.array((5*numpy.cos(1/5*numpy.pi),0.25,0))))
+        altitude = DashedLine(start=np.array((5*np.cos(1/5*np.pi),5*np.sin(1/5*np.pi),0)),end=np.array((5*np.cos(1/5*np.pi),0,0)))
+        projection = Line(start=ORIGIN,end=np.array((5*np.cos(1/5*np.pi),0,0)))
+        perpendicular = VGroup(Line(start=np.array((5*np.cos(1/5*np.pi)-0.25,0,0)),end=np.array((5*np.cos(1/5*np.pi)-0.25,0.25,0))),Line(start=np.array((5*np.cos(1/5*np.pi)-0.25,0.25,0)),end=np.array((5*np.cos(1/5*np.pi),0.25,0))))
         self.play(ShowCreation(altitude),FadeIn(perpendicular))
         self.wait()
             
-        altitudeC = Line(start=numpy.array((5*numpy.cos(1/5*numpy.pi),5*numpy.sin(1/5*numpy.pi),0)),end=numpy.array((5*numpy.cos(1/5*numpy.pi),0,0))).set_color("#FFFF00")
+        altitudeC = Line(start=np.array((5*np.cos(1/5*np.pi),5*np.sin(1/5*np.pi),0)),end=np.array((5*np.cos(1/5*np.pi),0,0))).set_color("#FFFF00")
         projectionC = projection.deepcopy().set_color("#FFFF00")
         braceV = Brace(altitude,RIGHT)
         braceH = Brace(projection,DOWN)
@@ -126,7 +125,7 @@ class D55P9(Scene):
         v50rform0 = TexMobject("\\vec{v}=[5cos(36\\si{\\degree}),5sin(36\\si{\\degree})]")
         v50rform1 = TexMobject("=5\\times[cos(36\\si{\\degree}),sin(36\\si{\\degree})]")
         v50rform1.next_to(v50rform0,RIGHT)
-        varrow.rotate(3/2*numpy.pi)
+        varrow.rotate(3/2*np.pi)
         varrow.next_to(v50form,DOWN)
         v50rform0.next_to(varrow,DOWN)
         VGroup(v50form,varrow,v50rform0).move_to(ORIGIN)
@@ -137,11 +136,11 @@ class D55P9(Scene):
         self.play(FadeOut(VGroup(varrow,v50form)),MoveToTarget(v50rform0))
         self.wait()
           
-        v50rform0.generate_target().shift(numpy.array((-v50rform1.get_width()/2,0,0)))
+        v50rform0.generate_target().shift(np.array((-v50rform1.get_width()/2,0,0)))
         self.play(MoveToTarget(v50rform0))
         self.wait()
           
-        v50rform1.shift(numpy.array((-v50rform1.get_width()/2,0,0)))
+        v50rform1.shift(np.array((-v50rform1.get_width()/2,0,0)))
         self.play(Write(v50rform1))
         self.wait()
           
@@ -164,7 +163,7 @@ class D55P9(Scene):
         self.play(ShowCreation(plane))
         self.wait()
          
-        exampleVU = Vector(numpy.array((2.5,0,0))).set_color("#BAF1A1")
+        exampleVU = Vector(np.array((2.5,0,0))).set_color("#BAF1A1")
         exampleVV = exampleVU.deepcopy().set_color("#FA744F")
         exampleVUL = TexMobject("\\vec{u}")
         exampleVVL = TexMobject("\\vec{v}")
@@ -186,13 +185,13 @@ class D55P9(Scene):
         varCos = 2.5
          
         def getThetaDegFromCoord():
-            return lambda f : exampleVV.get_angle()*180/numpy.pi if exampleVV.get_angle()*180/numpy.pi>0 else 360+exampleVV.get_angle()*180/numpy.pi
+            return lambda f : exampleVV.get_angle()*180/np.pi if exampleVV.get_angle()*180/np.pi>0 else 360+exampleVV.get_angle()*180/np.pi
         def getXComponent():
             return lambda f : exampleVU.get_vector()[0]
         def getCos():
-            return lambda f : exampleVU.get_vector()[0]*numpy.cos(exampleVV.get_angle() if exampleVV.get_angle()>0 else numpy.pi*2+exampleVV.get_angle())
+            return lambda f : exampleVU.get_vector()[0]*np.cos(exampleVV.get_angle() if exampleVV.get_angle()>0 else np.pi*2+exampleVV.get_angle())
         def getSin():
-            return lambda f : exampleVU.get_vector()[0]*numpy.sin(exampleVV.get_angle() if exampleVV.get_angle()>0 else numpy.pi*2+exampleVV.get_angle())
+            return lambda f : exampleVU.get_vector()[0]*np.sin(exampleVV.get_angle() if exampleVV.get_angle()>0 else np.pi*2+exampleVV.get_angle())
          
         exampleVULV1 = TexMobject("=[").next_to(exampleVUL)
         exampleVULV2 = DecimalNumber(varX).next_to(exampleVULV1,buff=0.05)
@@ -211,7 +210,7 @@ class D55P9(Scene):
         exampleVVLV6 = TexMobject("]").next_to(exampleVVLV5,buff=0.5)
         VGroup(exampleVVLV1,exampleVVLV2,exampleVVLV3,exampleVVLV4,exampleVVLV5,exampleVVLV6).set_color("#FA744F")
          
-        self.play(exampleVVL.shift,numpy.array((0,-DEFAULT_MOBJECT_TO_MOBJECT_BUFFER-exampleTheta1.get_height(),0)))
+        self.play(exampleVVL.shift,np.array((0,-DEFAULT_MOBJECT_TO_MOBJECT_BUFFER-exampleTheta1.get_height(),0)))
         self.wait()
          
         self.play(Write(VGroup(exampleVULV1,exampleVULV2,exampleVULV3)),
@@ -219,12 +218,12 @@ class D55P9(Scene):
                   Write(VGroup(exampleVVLV1,exampleVVLV2,exampleVVLV3,exampleVVLV4,exampleVVLV5,exampleVVLV6)))
         self.wait()
          
-        self.play(Rotating(exampleVV,run_time=5,rate_func=smooth,radians=2/3*numpy.pi,about_point=ORIGIN),
+        self.play(Rotating(exampleVV,run_time=5,rate_func=smooth,radians=2/3*np.pi,about_point=ORIGIN),
                   ChangingDecimal(exampleTheta2,getThetaDegFromCoord()),
                   ChangingDecimal(exampleVVLV3,getCos()),
                   ChangingDecimal(exampleVVLV5,getSin()))
         self.wait()
-        self.play(Rotating(exampleVV,run_time=12,rate_func=smooth,radians=7/6*numpy.pi,about_point=ORIGIN),
+        self.play(Rotating(exampleVV,run_time=12,rate_func=smooth,radians=7/6*np.pi,about_point=ORIGIN),
                   ChangingDecimal(exampleTheta2,getThetaDegFromCoord()),
                   ChangingDecimal(exampleVVLV3,getCos()),
                   ChangingDecimal(exampleVVLV5,getSin()))
@@ -235,7 +234,7 @@ class D55P9(Scene):
                   ChangingDecimal(exampleVVLV3,getCos()),
                   ChangingDecimal(exampleVVLV5,getSin()))
         self.wait()
-        self.play(Rotating(exampleVV,run_time=5,rate_func=smooth,radians=-2/3*numpy.pi,about_point=ORIGIN),
+        self.play(Rotating(exampleVV,run_time=5,rate_func=smooth,radians=-2/3*np.pi,about_point=ORIGIN),
                   ChangingDecimal(exampleTheta2,getThetaDegFromCoord()),
                   ChangingDecimal(exampleVVLV3,getCos()),
                   ChangingDecimal(exampleVVLV5,getSin()))
@@ -252,7 +251,7 @@ class D55P9(Scene):
                   ChangingDecimal(exampleVVLV3,getCos()),
                   ChangingDecimal(exampleVVLV5,getSin()))
         self.wait()
-        self.play(Rotating(exampleVV,run_time=12,rate_func=smooth,radians=-7/6*numpy.pi,about_point=ORIGIN),
+        self.play(Rotating(exampleVV,run_time=12,rate_func=smooth,radians=-7/6*np.pi,about_point=ORIGIN),
                   ChangingDecimal(exampleTheta2,getThetaDegFromCoord()),
                   ChangingDecimal(exampleVVLV3,getCos()),
                   ChangingDecimal(exampleVVLV5,getSin()))
@@ -281,7 +280,7 @@ class D55P9(Scene):
         
         answer2 = TexMobject("=(5cos\\theta)^{2}+(5sin\\theta)^{2}")
         
-        self.play(ApplyMethod(answer1.shift,numpy.array((-answer2.get_width()/2,0,0))))
+        self.play(ApplyMethod(answer1.shift,np.array((-answer2.get_width()/2,0,0))))
         self.wait()
         
         answer2.next_to(answer1)
