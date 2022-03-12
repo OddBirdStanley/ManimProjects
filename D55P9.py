@@ -1,7 +1,5 @@
 from manimlib.imports import *
 
-#Author: Stanley Jian
-#CRAPPY Organization......
 class D55P9(Scene):
     def construct(self):
         author = TextMobject("Made By Stanley Jian")

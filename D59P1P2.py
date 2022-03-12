@@ -1,19 +1,5 @@
 from manimlib.imports import *
 
-#TODO: Fix Problem 2 second function lineH: curvy
-#TODO: Check Problem 2 whether 0.001 is needed for points defining lineH. Line 281.
-
-class Prelude(Scene):
-    def construct(self):
-        line1 = TextMobject("What is going on?").scale(0.6)
-        line2 = TextMobject("I am confused.").scale(0.6).next_to(line1,direction=DOWN)
-        line3 = TextMobject("I have not received an answer for the previous video.").scale(0.6).next_to(line2,direction=DOWN)
-        line4 = TextMobject("So no speaking this time.").scale(0.6).next_to(line3,direction=DOWN)
-        self.play(Write(VGroup(line1,line2,line3,line4).center()))
-        self.wait()
-        self.play(FadeOut(VGroup(line1,line2,line3,line4)))
-        self.wait()
-
 class D59P1(Scene):
     def construct(self):
         author = TextMobject("Made By Stanley Jian")
